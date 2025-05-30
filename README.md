@@ -81,5 +81,9 @@ This repository contains preprocessing, feature-engineering, clustering, and mod
 2. **Prepare Datasets for testing**
     ```r
     source("svm01_datasets_for_algorithms.R")
-    <- prepare_model_datasets(final_data_rvm01, df_to_use, prod_hier) 
-    
+    datasets <- prepare_model_datasets(final_data_rvm01, svm01_clean, prod_hier)
+    dataset_a <- datasets$dataset_a
+    dataset_b <- datasets$dataset_b
+    svm_for_material <- datasets$svm_for_material
+    svm_for_market <- datasets$svm_for_market
+
