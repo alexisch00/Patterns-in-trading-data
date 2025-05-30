@@ -34,6 +34,23 @@ This repository contains preprocessing, feature-engineering, clustering, and mod
   - `compute_rf_importances()`: trains a Random Forest on the clustered data to detect the top-N important features  
   - `feature_clock_pipeline()`: builds a UMAP embedding, fits a NonLinearClock visualization on selected features, and saves a feature-clock plot
 
+- **preprocessing_SVM01.R**  
+  Implements data cleaning and transformation steps for the SVM01 dataset:  
+  - NA-based column removal
+  - Constant-value column removal 
+  - Random sampling and near-zero variance filtering 
+  - Mean imputation for remaining numeric NAs 
+  - Correlation-based feature reduction
+
+ - **svm01_datasets_for_algorithms.R**  
+  Prepares specialized SVM01 subsets for modeling and evaluation:  
+  - Merges cleaned SVM01 with final_data_rvm01, preserving a specified set of high-NA columns
+  - Filters rows to four target company groups and creates a Group factor
+  - Engineers fee-code signal metrics (non-NA/non-zero count, sum, any-nonzero indicator) from columns 316–365
+  - Detects highly correlated fee columns, aggregates each group into a new summed feature, and removes the originals
+  - Splits data into dataset_a (347 non-NA) and dataset_b (347 NA) for separate analyses
+  - Constructs model-ready outputs: dataset_a, dataset_b, svm_for_material, and svm_for_market
+
 ## Getting Started
 ### OFD - FDS
 1. **Preprocessing (R)**
@@ -50,7 +67,7 @@ This repository contains preprocessing, feature-engineering, clustering, and mod
     k          = 30,
     alpha      = 0.7,
     point_size = 1.5,
-    ylim       = c(-10, 15)
-  )
+    ylim       = c(-10, 15))
+  
 ### SVM01
 1. 
