@@ -72,6 +72,7 @@ This repository contains preprocessing, feature-engineering, clustering, and mod
 ### SVM01
 1. **Preprocessing**
    ```r
+    source("preprocessing_SVM01.R")
     df_clean <- remove_na_columns(df, threshold = na_threshold)
     df_clean <- remove_constant_columns(df_clean)
     df_sampled <- process_and_sample_data(df_clean, sample_frac = sample_frac)
