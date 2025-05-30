@@ -14,10 +14,16 @@ This repository contains preprocessing, feature-engineering, clustering, and mod
   - Saves the cleaned dataset to `fds_final_cleaned.RData`
 
 - **functions_OFD_FDS.R**  
-  Defines modular R functions to apply each preprocessing step independently and a wrapper `preprocess_fds()` that runs the full pipeline on raw data and saves the result.
+  Provides modular R functions for exploratory analysis and clustering on OFD and FDS datasets, including:  
+  - `perform_umap()`: UMAP projection of sampled & scaled data  
+  - `perform_pca()`: PCA projection scatter plot  
+  - `perform_hdbscan()`: HDBSCAN clustering visualization on UMAP embedding  
+  - `perform_louvain()`: Louvain community detection on k-NN graph + UMAP plot  
+  - `perform_tda()`: Topological data analysis via persistence diagrams for specified clusters  
+  - `perform_kmeans()`: K-means clustering on scaled data with UMAP visualization  
 
 - **SVM01_algorithms.R**  
-  Demonstrates classification workflows using several algorithms on all three datasets:
+  Demonstrates classification workflows using several algorithms on the third dataset:
   - Random Forest  
   - XGBoost  
   - Support Vector Machine (SVM)  
