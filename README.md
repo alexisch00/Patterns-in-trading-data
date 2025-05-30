@@ -70,4 +70,10 @@ This repository contains preprocessing, feature-engineering, clustering, and mod
     ylim       = c(-10, 15))
   
 ### SVM01
-1. 
+1. **Preprocessing**
+   ```r
+    df_clean <- remove_na_columns(df, threshold = na_threshold)
+    df_clean <- remove_constant_columns(df_clean)
+    df_sampled <- process_and_sample_data(df_clean, sample_frac = sample_frac)
+    df_decorrelated <- remove_highly_correlated(df_sampled, cutoff = cor_cutoff)
+    df_imputed <- impute_numeric_means(df_decorrelated)
