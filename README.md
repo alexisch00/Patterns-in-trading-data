@@ -35,10 +35,10 @@ This repository contains preprocessing, feature-engineering, clustering, and mod
   - `feature_clock_pipeline()`: builds a UMAP embedding, fits a NonLinearClock visualization on selected features, and saves a feature-clock plot
 
 ## Getting Started
-# OFD - FDS
+### OFD - FDS
 1. **Preprocessing (R)**
    ```r
    source("preprocessing_OFD_FDS.R")
    cleaned <- preprocess_fds(fds_raw, column_info_fds)
-# SVM01
+### SVM01
 1. 
