@@ -22,7 +22,6 @@ process_and_sample_data <- function(df, sample_frac = 0.03) {
   return(sampled[, !nzv$nzv])
 }
 
-
 impute_numeric_means <- function(df) {
   df[] <- lapply(df, function(col) {
     if (is.numeric(col)) {
@@ -33,6 +32,22 @@ impute_numeric_means <- function(df) {
   return(df)
 }
 
+find_highly_correlated_pairs <- function(df, cutoff = 0.9) {
+  cor_matrix <- cor(df, use = "pairwise.complete.obs")
+  cor_matrix[lower.tri(cor_matrix, diag = TRUE)] <- NA
+
+  high_pairs <- which(abs(cor_matrix) > cutoff, arr.ind = TRUE)
+  
+  results <- data.frame(
+    var1 = colnames(cor_matrix)[high_pairs[, 1]],
+    var2 = colnames(cor_matrix)[high_pairs[, 2]],
+    correlation = cor_matrix[high_pairs]
+  )
+  
+  results <- results[order(-abs(results$correlation)), ]  # sort by absolute correlation
+  return(results)
+}
+                          
 # ----------------------------
 # Remove one of each pair of highly correlated variables
 
