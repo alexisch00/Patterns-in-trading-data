@@ -72,11 +72,11 @@ This repository contains preprocessing, feature-engineering, clustering, and mod
 ### SVM01
 1. **Get all highly correlated columns (>90%)**
    ```r
-   
-3. **Preprocessing**
+   correlated_column_pairs <- find_highly_correlated_pairs(final_data_rvm01, cutoff = 0.9)
+3. **Preprocessing data**
    ```r
     source("preprocessing_SVM01.R")
-    df_clean <- remove_na_columns(df, threshold = na_threshold)
+    df_clean <- remove_na_columns(final_data_rvm01, threshold = na_threshold)
     df_clean <- remove_constant_columns(df_clean)
     df_sampled <- process_and_sample_data(df_clean, sample_frac = sample_frac)
     df_decorrelated <- remove_highly_correlated(df_sampled, cutoff = cor_cutoff)
