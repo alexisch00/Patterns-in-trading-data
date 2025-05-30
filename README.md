@@ -70,7 +70,10 @@ This repository contains preprocessing, feature-engineering, clustering, and mod
     ylim       = c(-10, 15))
   
 ### SVM01
-1. **Preprocessing**
+1. **Get all highly correlated columns (>90%)**
+   ```r
+   
+3. **Preprocessing**
    ```r
     source("preprocessing_SVM01.R")
     df_clean <- remove_na_columns(df, threshold = na_threshold)
@@ -78,7 +81,7 @@ This repository contains preprocessing, feature-engineering, clustering, and mod
     df_sampled <- process_and_sample_data(df_clean, sample_frac = sample_frac)
     df_decorrelated <- remove_highly_correlated(df_sampled, cutoff = cor_cutoff)
     df_to_use <- impute_numeric_means(df_decorrelated)
-2. **Prepare Datasets for testing**
+4. **Prepare Datasets for testing**
     ```r
     source("svm01_datasets_for_algorithms.R")
     datasets <- prepare_model_datasets(final_data_rvm01, svm01_clean, prod_hier)
@@ -86,7 +89,7 @@ This repository contains preprocessing, feature-engineering, clustering, and mod
     dataset_b <- datasets$dataset_b
     svm_for_material <- datasets$svm_for_material
     svm_for_market <- datasets$svm_for_market
-3. **Example run of Random Forest on dataset A**
+5. **Example run of Random Forest on dataset A to predict company ID**
    ```r
     source("SVM01_algorithms.R")
     df_a <- dataset_a[dataset_a$Group %in% c(16, 18), ]
