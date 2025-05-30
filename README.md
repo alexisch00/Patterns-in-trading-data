@@ -40,5 +40,17 @@ This repository contains preprocessing, feature-engineering, clustering, and mod
    ```r
    source("preprocessing_OFD_FDS.R")
    cleaned <- preprocess_fds(fds_raw, column_info_fds)
+
+2. **Example function**
+   ```r
+    result_ofd <- perform_louvain(
+    data       = ofd_subset_data,
+    sample_size= 5000,
+    seed       = 123,
+    k          = 30,
+    alpha      = 0.7,
+    point_size = 1.5,
+    ylim       = c(-10, 15)
+  )
 ### SVM01
 1. 
