@@ -76,4 +76,4 @@ This repository contains preprocessing, feature-engineering, clustering, and mod
     df_clean <- remove_constant_columns(df_clean)
     df_sampled <- process_and_sample_data(df_clean, sample_frac = sample_frac)
     df_decorrelated <- remove_highly_correlated(df_sampled, cutoff = cor_cutoff)
-    df_imputed <- impute_numeric_means(df_decorrelated)
+    df_to_use <- impute_numeric_means(df_decorrelated)
