@@ -89,4 +89,8 @@ This repository contains preprocessing, feature-engineering, clustering, and mod
 3. **Example run of Random Forest on dataset A**
    ```r
     source("SVM01_algorithms.R")
-    
+    df_a <- dataset_a[dataset_a$Group %in% c(16, 18), ]
+    df_a$Group <- droplevels(as.factor(df_a$Group))
+    df_a <- df_a[, !names(df_a) %in% c("70")]
+    names(df_a) <- make.names(names(df_a))
+    sorted_importance_a <- run_random_forest(df_a, target_col = "Group")
