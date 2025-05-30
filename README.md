@@ -31,7 +31,7 @@ This repository contains preprocessing, feature-engineering, clustering, and mod
 
 - **Pythonwork.py**  
   Contains Python implementations for advanced feature analysis:
-  - `compute_rf_importances()`: trains a Random Forest on `sampled_data_louvain.csv`, prints & plots the top-N feature importances  
+  - `compute_rf_importances()`: trains a Random Forest on the clustered data to detect the top-N important features  
   - `feature_clock_pipeline()`: builds a UMAP embedding, fits a NonLinearClock visualization on selected features, and saves a feature-clock plot
 
 ## Getting Started
