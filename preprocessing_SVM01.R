@@ -1,11 +1,22 @@
 library(dplyr)
 library(caret)
 
-filter_na_columns <- function(df, threshold = 0.85) {
+find_na_columns <- function(df, threshold = 0.85) {
+  na_prop <- vapply(df, function(col) mean(is.na(col)), numeric(1))
+  na_cols <- names(na_prop[na_prop >= threshold])
+  return(na_cols)
+}
+                    
+remove_na_columns <- function(df, threshold = 0.85) {
   na_prop <- vapply(df, function(col) mean(is.na(col)), numeric(1))
   df[, na_prop < threshold]
 }
 
+find_constant_columns <- function(df) {
+  constant_cols <- sapply(df, function(x) length(unique(na.omit(x))) == 1)
+  return(names(constant_cols[constant_cols]))
+}
+                    
 remove_constant_columns <- function(df) {
   constant_cols <- sapply(df, function(x) length(unique(na.omit(x))) == 1)
   df[, !constant_cols]
