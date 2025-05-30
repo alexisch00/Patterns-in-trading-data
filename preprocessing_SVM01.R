@@ -26,8 +26,6 @@ remove_constant_columns <- function(df) {
 # Sample, clean, and reduce dimensionality
 
 process_and_sample_data <- function(df, sample_frac = 0.03) {
-  df <- filter_na_columns(df)
-  df <- remove_constant_columns(df)
   sampled <- df[sample(nrow(df), size = sample_frac * nrow(df)), ]
   nzv <- nearZeroVar(sampled, freqCut = 95/5, saveMetrics = TRUE)
   return(sampled[, !nzv$nzv])
