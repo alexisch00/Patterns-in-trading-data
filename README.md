@@ -86,4 +86,7 @@ This repository contains preprocessing, feature-engineering, clustering, and mod
     dataset_b <- datasets$dataset_b
     svm_for_material <- datasets$svm_for_material
     svm_for_market <- datasets$svm_for_market
-
+3. **Example run of Random Forest on dataset A**
+   ```r
+    source("SVM01_algorithms.R")
+    
